@@ -13,8 +13,9 @@ struct Movie: Identifiable {
     var genre: String
     var description: String
     var imageName: String
+    let releaseDate: String
 }
-
+/*
 struct MovieListView: View {
     let movies: [Movie] = [
         Movie(title: "Movie 1", genre: "Action", description: "This is an action-packed movie.", imageName: "movie1"),
@@ -53,22 +54,82 @@ struct MovieListView: View {
     }
 }
 
+*/
 
+public struct MovieListView: View {
+    @ObservedObject var viewModel = MovieListViewModel()
+    
+    public init() { }
 
-struct MovieRow: View {
-    let movie: Movie
+    public var body: some View {
+        NavigationView {
+            ZStack {
+                // ... Your existing view code ...
 
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(movie.title)
-                .font(.headline)
-                .foregroundColor(.white)
-            Text(movie.genre)
-                .font(.subheadline)
-                .foregroundColor(.gray)
+                VStack(spacing: 20) {
+                    List(viewModel.movies) { movie in
+                        let thumbURL = URL(string: "https://image.tmdb.org/t/p/w500/\(movie.imageName)")
+                        NavigationLink(destination: MovieDetailView(movie: movie, posterURL: thumbURL!)) {
+                            MovieRow(movie: movie, posterURL: thumbURL!)
+                        }
+                    }
+                    .listStyle(.plain)
+                    .padding(.top, 20)
+                }
+                .frame(width: 350)
+                .onAppear {
+                    viewModel.fetchMovies()
+                }
+            }
+            .navigationBarTitle("List View")
         }
     }
 }
+
+struct MovieRow: View {
+    let movie: Movie
+    let posterURL: URL
+
+    var body: some View {
+        HStack(spacing: 10) {
+            AsyncImage(url: posterURL) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80, height: 120)
+                        .cornerRadius(8)
+                case .failure:
+                    Image(systemName: "exclamationmark.icloud.fill")
+                        .font(.system(size: 40))
+                        .foregroundColor(.red)
+                @unknown default:
+                    EmptyView()
+                }
+            }
+
+            VStack(alignment: .leading, spacing: 5) {
+                Text(movie.title)
+                    .font(.headline)
+                    .foregroundColor(.primary)
+
+                Text(movie.genre)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+
+                Text(movie.description)
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                    .lineLimit(2)
+            }
+        }
+        .padding(10)
+    }
+}
+
 
 struct MovieListView_Previews: PreviewProvider {
     static var previews: some View {
