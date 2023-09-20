@@ -18,7 +18,7 @@ public struct MovieListView: View {
                 VStack(spacing: 20) {
                     List(viewModel.movies) { movie in
                         let thumbURL = URL(string: "https://image.tmdb.org/t/p/w500/\(movie.imageName)")
-                        NavigationLink(destination: MovieDetailView(movie: movie, posterURL: thumbURL!)) {
+                        NavigationLink(destination: MovieDetailView(movie: movie)) {
                             MovieRow(movie: movie, posterURL: thumbURL!)
                         }
                     }
