@@ -8,12 +8,12 @@
 import SwiftUI
 
 public struct MovieListView: View {
-    @ObservedObject var viewModel = MovieListViewModel()
+    //@ObservedObject var viewModel = MovieListViewModel()
+    @StateObject var viewModel = MovieListViewModel()
     
     public init() { }
 
     public var body: some View {
-        NavigationView {
             ZStack {
                 VStack(spacing: 20) {
                     List(viewModel.movies) { movie in
@@ -31,8 +31,8 @@ public struct MovieListView: View {
                 }
             }
             .navigationBarTitle("List View")
+            .navigationBarBackButtonHidden(true)
         }
-    }
 }
 
 
