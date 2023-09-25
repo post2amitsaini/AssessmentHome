@@ -18,5 +18,4 @@ class MovieDetailViewModel: ObservableObject {
     func posterImageURL() -> URL? {
         return URL(string: Configuration.imageBaseUrl + movie.imageName)
     }
-
 }
