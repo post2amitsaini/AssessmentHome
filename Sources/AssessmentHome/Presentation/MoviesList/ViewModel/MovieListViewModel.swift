@@ -7,12 +7,13 @@
 
 import Foundation
 import Combine
+import AssessmentCore
 
 class MovieListViewModel: ObservableObject {
     @Published var movies: [Movie] = []
     private let fetchMoviesUseCase: FetchMoviesUseCase
 
-    init(fetchMoviesUseCase: FetchMoviesUseCase = FetchMoviesUseCase(movieRepository: MovieRepository())) {
+    init(fetchMoviesUseCase: FetchMoviesUseCase = FetchMoviesUseCase(movieRepository: MovieRepository(service: MovieService(networkManager: NetworkManager())))) {
         self.fetchMoviesUseCase = fetchMoviesUseCase
     }
 

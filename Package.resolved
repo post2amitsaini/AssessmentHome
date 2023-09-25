@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "assessmentcore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/post2amitsaini/AssessmentCore.git",
+      "state" : {
+        "revision" : "d6ea6d6701faa49a0a9432904ecf312fa509cca9",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 2
+}

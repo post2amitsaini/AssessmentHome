@@ -8,10 +8,13 @@
 import Foundation
 
 class MovieRepository: MovieRepositoryProtocol {
-    private let movieService = MovieService()
+    private let service: MovieServiceProtocol
+    init(service: MovieServiceProtocol) {
+        self.service = service
+    }
     
     func fetchMovies() async throws -> [Movie] {
-        let movieDataList = try await movieService.fetchMovies()
+        let movieDataList = try await service.fetchMoviesFromNetwork()
         let movies = movieDataList.map { movieData in
             Movie(
                 title: movieData.title,

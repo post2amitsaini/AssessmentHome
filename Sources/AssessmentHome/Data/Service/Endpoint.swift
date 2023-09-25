@@ -13,7 +13,7 @@ enum Endpoint {
     var path: String {
         switch self {
         case .nowPlaying:
-            return "/movie/now_playing"
+            return "/3/movie/now_playing"
         }
     }
 }
