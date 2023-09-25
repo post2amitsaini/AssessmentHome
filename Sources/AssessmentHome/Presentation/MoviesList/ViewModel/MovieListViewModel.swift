@@ -11,9 +11,9 @@ import AssessmentCore
 
 class MovieListViewModel: ObservableObject {
     @Published var movies: [Movie] = []
-    private let fetchMoviesUseCase: FetchMoviesUseCase
+    private let fetchMoviesUseCase: FetchMoviesUseCaseProtocol
 
-    init(fetchMoviesUseCase: FetchMoviesUseCase = FetchMoviesUseCase(movieRepository: MovieRepository(service: MovieService(networkManager: NetworkManager())))) {
+    init(fetchMoviesUseCase: FetchMoviesUseCaseProtocol = FetchMoviesUseCase(movieRepository: MovieRepository(service: MovieService(networkManager: NetworkManager())))) {
         self.fetchMoviesUseCase = fetchMoviesUseCase
     }
 

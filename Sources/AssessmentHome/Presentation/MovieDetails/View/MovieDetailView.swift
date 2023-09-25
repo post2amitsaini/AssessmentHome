@@ -8,44 +8,39 @@
 import SwiftUI
 
 struct MovieDetailView: View {
-    @ObservedObject var viewModel: MovieDetailViewModel
-
+    @StateObject private var viewModel: MovieDetailViewModel
+    
     init(movie: Movie) {
-        viewModel = MovieDetailViewModel(movie: movie)
+        _viewModel = StateObject(wrappedValue: MovieDetailViewModel(movie: movie))
     }
-
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                if let posterImage = viewModel.posterImage {
-                    Image(uiImage: posterImage)
+                AsyncImage(url: viewModel.posterImageURL()) { image in
+                    image
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 200, height: 300)
-                } else {
+                } placeholder: {
                     ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .green))
-                        .frame(width: 200, height: 300)
                 }
-
+                .frame(width: 200, height: 300)
+                
                 Text("Release Date: \(viewModel.movie.releaseDate)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-
+                
                 Text(viewModel.movie.description)
                     .font(.body)
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
                     .padding()
-
+                
                 Spacer()
             }
             .padding()
         }
         .navigationBarTitle(viewModel.movie.title)
-        .task {
-            await viewModel.fetchPosterImage()
-        }
     }
 }
 struct MovieDetailView_Previews: PreviewProvider {
