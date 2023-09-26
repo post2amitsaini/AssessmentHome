@@ -10,7 +10,8 @@ To install this package, import `https://github.com/post2amitsaini/AssessmentHom
 ![Detail](https://github.com/post2amitsaini/AssessmentHome/assets/43773429/aa0b5840-22d8-4ed6-9201-70b893829c78)
 
 # Unit test coverage
-<img width="379" alt="TestCaseReport" src="https://github.com/post2amitsaini/AssessmentHome/assets/43773429/09aff609-1473-4a66-b0b1-c51c7266e47a">
+<img width="250" alt="HomeTestCase" src="https://github.com/post2amitsaini/AssessmentHome/assets/43773429/38228108-80fe-4a3d-9783-f11a0f72fd7b">
+
 
 ## Usage example 
 
