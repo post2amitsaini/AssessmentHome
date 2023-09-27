@@ -3,11 +3,14 @@
 ##Installation
 
 To install this package, import `https://github.com/post2amitsaini/AssessmentHome` in SPM
+
 # Movie List UI
-![List](https://github.com/post2amitsaini/AssessmentHome/assets/43773429/2b5f7516-7b88-4b32-b753-982b9270ee2b)
+![list](https://github.com/post2amitsaini/AssessmentHome/assets/43773429/c441f2ee-43b3-4740-9faf-892438132409)
+
 
 # Detail UI
-![Detail](https://github.com/post2amitsaini/AssessmentHome/assets/43773429/aa0b5840-22d8-4ed6-9201-70b893829c78)
+![Detail](https://github.com/post2amitsaini/AssessmentHome/assets/43773429/7146be72-1e82-4358-b68e-6460bd8c663d)
+
 
 # Unit test coverage
 <img width="761" alt="Screenshot 2023-09-26 at 2 59 01 PM" src="https://github.com/post2amitsaini/AssessmentHome/assets/43773429/037dde3e-0a1b-41ac-85f3-026ed4407151">
